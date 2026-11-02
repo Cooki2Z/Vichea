@@ -14,10 +14,10 @@ The current MVP includes teacher sign-up/sign-in, classroom creation and teacher
 ## Supabase setup
 
 1. Create a Supabase project and confirm email/password auth is enabled.
-2. Open the SQL Editor and run `supabase/schema.sql` once. If the project already has the earlier Vichea schema, run `supabase/fix_join_session.sql` to repair student joins, `supabase/add_classroom_attendance.sql` to add the attendance register and policies, and `supabase/add_live_quizzes.sql` to enable quiz folders, ordered questions, timers, score tracking, and quiz image uploads. Run `supabase/remove_classroom_join_code.sql` to remove the unused classroom join-code column (session join codes remain).
+2. Open the SQL Editor and run `supabase/schema.sql` once. If the project already has the earlier Vichea schema, run `supabase/add_classroom_attendance.sql` to add the attendance register and policies. Run `supabase/add_live_quizzes.sql` to enable quiz folders, ordered questions, timers, score tracking, and quiz image uploads. Run `supabase/remove_classroom_join_code.sql` to remove the unused classroom join-code column (session join codes remain).
 3. In Table Editor / Publications, check that the listed tables are in `supabase_realtime` if your project does not allow the publication statements in the script.
 4. Serve this folder from a local HTTP server or static host. Opening `index.html` as a `file://` URL may prevent browser modules/CDN resources from loading.
-5. For GitHub Pages, set `supabaseUrl` and `supabaseAnonKey` in `config.js` to the Supabase Project URL and public anon/publishable key, then set the deployed Pages address as the Supabase Auth Site URL and an allowed redirect URL. These values are public in a browser app; never use the service-role key. For local setup, you can instead enter them on the first screen; those values are saved in that browser's local storage.
+5. For a deployed site, set `supabaseUrl` and `supabaseAnonKey` in `config.js` to the project URL and public anon/publishable key. The app loads these automatically; never use a service-role or secret key in browser code. For local setup, browser local storage remains available as a fallback.
 6. Create a teacher account. If email confirmation is enabled, confirm the email, then log in.
 7. Create a classroom, start a session, and share the session code. Students can open the app on another browser/device, choose â€œJoin a session,â€ and enter the code and a nickname.
 
